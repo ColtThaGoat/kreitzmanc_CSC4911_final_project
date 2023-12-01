@@ -1,0 +1,122 @@
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentReceiptItem_linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0B8310"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/receiptIdLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:text="@string/receiptIdLabel"
+            android:textColor="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/transactionDateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                <TextView
+                    android:id="@+id/transactionDateEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transactionDate" />
+
+                <TextView
+                    android:id="@+id/receiptProviderLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/receiptProvider"
+                    android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                <EditText
+                    android:id="@+id/receiptProviderEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/receiptProviderTextEditHint"
+                    android:importantForAutofill="no"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/transactionTotalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/transactionTotalLabel"
+                    android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                <EditText
+                    android:id="@+id/transactionTotalEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/transactionTotalEditTextHint"
+                    android:inputType="numberDecimal" />
+
+                <TextView
+                    android:id="@+id/receiptImagesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/receiptImageLabel"
+                    android:textAppearance="?attr/textAppearanceHeadline5" />
+
+                <ImageButton
+                    android:id="@+id/addReceiptImageButton"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#BCBDBC"
+                    android:src="@android:drawable/ic_menu_camera"
+                    app:tint="#000000"
+                    android:tintMode="src_in"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginBottom="12dp"
+                    android:scaleType="centerInside"
+                    android:scaleX="10"
+                    android:scaleY="12"
+                    tools:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/saveReceiptChangesButton"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/cardview_dark_background"
+        android:gravity="center"
+        android:text="@string/saveChangesButtonLabel" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
