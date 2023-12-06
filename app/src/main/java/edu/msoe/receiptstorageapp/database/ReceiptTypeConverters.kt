@@ -16,13 +16,38 @@ class ReceiptTypeConverters {
     }
 
     @TypeConverter
-    fun bigDecimalToDouble(transactionTotal: BigDecimal): Double {
+    fun fromBigDecimal(transactionTotal: BigDecimal): String {
+        return transactionTotal.toString()
+    }
+
+    @TypeConverter
+    fun toBigDecimal(transactionTotal: String): BigDecimal {
+        return transactionTotal.toBigDecimal()
+    }
+
+    @TypeConverter
+    fun fromString(transactionTotal: String): Double {
+        if (transactionTotal.isEmpty())
+            return 0.0
         return transactionTotal.toDouble()
     }
 
     @TypeConverter
-    fun stringToBigDecimal(transactionTotal: Double?): BigDecimal {
-        if (transactionTotal == null) return BigDecimal.ZERO
-        return BigDecimal.valueOf(transactionTotal) ?: BigDecimal.ZERO
+    fun toString(transactionTotal: Double): String {
+        return transactionTotal.toString()
     }
+
+
+//    @TypeConverter
+//    fun bigDecimalToDouble(transactionTotal: BigDecimal): Double {
+//        return transactionTotal.toDouble()
+//    }
+
+//    @TypeConverter
+//    fun stringToBigDecimal(transactionTotal: Double?): BigDecimal {
+//        if (transactionTotal == null) return BigDecimal.ZERO
+//        return BigDecimal.valueOf(transactionTotal) ?: BigDecimal.ZERO
+//    }
+
+
 }

@@ -38,7 +38,8 @@ class ReceiptHolder(
     fun bind(receipt: Receipt, onReceiptClicked: (receiptId: UUID) -> Unit) {
         binding.dateTextview.text = receipt.date.toString()
         binding.vendorTextview.text = receipt.vendorName
-        binding.grandTotalTextview.text = String.format("%d", receipt.grandTotal)
+        binding.grandTotalTextview.text = ("$") + receipt.grandTotal.toString()
+//        binding.grandTotalTextview.text = String.format("%d", receipt.grandTotal)
 
         binding.root.setOnClickListener {
             onReceiptClicked(receipt.receiptId)

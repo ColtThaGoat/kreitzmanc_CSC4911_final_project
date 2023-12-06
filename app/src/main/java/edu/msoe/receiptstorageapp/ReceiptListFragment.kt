@@ -97,7 +97,7 @@ class ReceiptListFragment : Fragment() {
                 receiptId = UUID.randomUUID(),
                 date = Date(),
                 vendorName = "",
-                grandTotal = -1.0
+                grandTotal = "0.0".toBigDecimal()
             )
             receiptListViewModel.addReceiptItem(newReceipt)
             findNavController().navigate(

@@ -52,7 +52,7 @@ class ReceiptItemFragment : Fragment() {
 
             transactionTotalEditText.doOnTextChanged { text, _, _, _ ->
                 receiptDetailViewModel.updateReceipt { oldReceipt ->
-                    oldReceipt.copy(grandTotal = text.toString().toDouble())
+                    oldReceipt.copy(grandTotal = text.toString().toBigDecimal())
                 }
 
             }
