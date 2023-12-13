@@ -37,13 +37,7 @@ class DatePickerFragment : DialogFragment() {
 
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        var datePickerDialog = DatePickerDialog(
-            requireContext(),
-            dateListener,
-            year,
-            month,
-            day
-        )
+        var datePickerDialog = DatePickerDialog(requireContext(), dateListener, year, month, day)
 
         datePickerDialog.datePicker.maxDate = (System.currentTimeMillis() - 1000)
 
