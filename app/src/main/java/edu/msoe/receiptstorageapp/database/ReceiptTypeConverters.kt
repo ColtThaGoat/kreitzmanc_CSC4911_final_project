@@ -22,20 +22,23 @@ class ReceiptTypeConverters {
 
     @TypeConverter
     fun toBigDecimal(transactionTotal: String): BigDecimal {
+        if( transactionTotal.isEmpty() ) {
+            return BigDecimal.ZERO
+        }
         return transactionTotal.toBigDecimal()
     }
 
-    @TypeConverter
-    fun fromString(transactionTotal: String): Double {
-        if (transactionTotal.isEmpty())
-            return 0.0
-        return transactionTotal.toDouble()
-    }
-
-    @TypeConverter
-    fun toString(transactionTotal: Double): String {
-        return transactionTotal.toString()
-    }
+//    @TypeConverter
+//    fun fromString(transactionTotal: String): Double {
+//        if (transactionTotal.isEmpty())
+//            return 0.0
+//        return transactionTotal.toDouble()
+//    }
+//
+//    @TypeConverter
+//    fun toString(transactionTotal: Double): String {
+//        return transactionTotal.toString()
+//    }
 
 
 //    @TypeConverter

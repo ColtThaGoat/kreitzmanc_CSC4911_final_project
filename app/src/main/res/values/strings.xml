@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Receipt Storage App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="receiptProvider">Receipt Provider:</string>
     <string name="date">Date:</string>
     <string name="transactionDate">--/--/----</string>
@@ -11,6 +9,7 @@
     <string name="receiptImageViewHint">Take a Photo of Your Receipt</string>
     <string name="receiptImageLabel">Image(s):</string>
     <string name="receiptIdLabel">Receipt #123456789123456789123456789123456789</string>
-    <string name="saveChangesButtonLabel">Save Changes</string>
+    <string name="saveChangesButtonLabel">Save</string>
     <string name="new_receipt_item">Add Receipt</string>
+    <string name="filteritem">filterItem</string>
 </resources>

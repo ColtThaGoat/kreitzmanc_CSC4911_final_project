@@ -39,6 +39,7 @@ class ReceiptListFragment : Fragment() {
         }
 
     private val receiptListViewModel: ReceiptListViewModel by viewModels()
+    private val receiptSearchViewModel: ReceiptSearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +88,10 @@ class ReceiptListFragment : Fragment() {
                 showNewReceiptItem()
                 true
             }
+            R.id.search_receipt_items -> {
+                showSearchFragment()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -97,11 +102,20 @@ class ReceiptListFragment : Fragment() {
                 receiptId = UUID.randomUUID(),
                 date = Date(),
                 vendorName = "",
-                grandTotal = "0.0".toBigDecimal()
+                grandTotal = "0.00".toBigDecimal()
             )
             receiptListViewModel.addReceiptItem(newReceipt)
             findNavController().navigate(
                 ReceiptListFragmentDirections.showReceipt(newReceipt.receiptId)
+            )
+        }
+    }
+
+    private fun showSearchFragment() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            findNavController().navigate(
+//                ReceiptListFragmentDirections.showReceiptSearch(receiptListViewModel)
+                ReceiptListFragmentDirections.showReceiptSearch()
             )
         }
     }

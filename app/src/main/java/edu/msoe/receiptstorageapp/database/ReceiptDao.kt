@@ -24,6 +24,16 @@ interface ReceiptDao {
     @Query("SELECT * FROM receipt")
     fun getReceiptItems(): Flow<List<Receipt>>
 
+    @Query("SELECT * FROM receipt " +
+            "ORDER BY " +
+            "CASE WHEN :sortBy = 'date' AND :direction = 0 THEN date END DESC, " +
+            "CASE WHEN :sortBy = 'date' AND :direction = 1 THEN date END ASC, " +
+            "CASE WHEN :sortBy = 'provider' AND :direction = 0 THEN vendorName END DESC, " +
+            "CASE WHEN :sortBy = 'provider' AND :direction = 1 THEN vendorName END ASC, " +
+            "CASE WHEN :sortBy = 'grandTotal' AND :direction = 0 THEN grandTotal END DESC, " +
+            "CASE WHEN :sortBy = 'grandTotal' AND :direction = 1 THEN grandTotal END ASC")
+    fun getSortedReceiptItems(sortBy: String, direction: Int): Flow<List<Receipt>>
+
     @Query("SELECT * FROM receipt WHERE date=(:date)")
     fun getReceiptItems(date: Date): Flow<List<Receipt>>
 

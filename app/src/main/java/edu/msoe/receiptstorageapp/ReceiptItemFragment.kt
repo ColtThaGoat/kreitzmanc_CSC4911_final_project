@@ -12,10 +12,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import edu.msoe.receiptstorageapp.databinding.FragmentReceiptItemBinding
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.util.Date
 
 private const val TAG = "ReceiptItemFragment"
 class ReceiptItemFragment : Fragment() {
@@ -24,6 +26,7 @@ class ReceiptItemFragment : Fragment() {
     private val binding get() = checkNotNull(_binding) {
         "Binding Inaccessible. Ensure view is visible"
     }
+
     private val args: ReceiptItemFragmentArgs by navArgs()
 
     private val receiptDetailViewModel: ReceiptItemViewModel by viewModels {
@@ -44,17 +47,18 @@ class ReceiptItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            receiptProviderEditText.doOnTextChanged { text, _, _, _ ->
+            saveReceiptChangesButton.setOnClickListener {
                 receiptDetailViewModel.updateReceipt { oldReceipt ->
-                    oldReceipt.copy(vendorName = text.toString())
-                }
-            }
-
-            transactionTotalEditText.doOnTextChanged { text, _, _, _ ->
-                receiptDetailViewModel.updateReceipt { oldReceipt ->
-                    oldReceipt.copy(grandTotal = text.toString().toBigDecimal())
+                    oldReceipt.copy(vendorName = receiptProviderEditText.text.toString())
                 }
 
+                receiptDetailViewModel.updateReceipt { oldReceipt ->
+                    if (transactionTotalEditText.text.toString().isEmpty()) {
+                            oldReceipt.copy(grandTotal = BigDecimal.ZERO)
+                        } else {
+                            oldReceipt.copy(grandTotal = transactionTotalEditText.text.toString().toBigDecimal())
+                        }
+                }
             }
         }
 
@@ -65,6 +69,14 @@ class ReceiptItemFragment : Fragment() {
                 }
             }
         }
+
+        setFragmentResultListener(
+            DatePickerFragment.REQUEST_KEY_DATE
+        ) { _, bundle ->
+            val newDate =
+                bundle.getSerializable(DatePickerFragment.BUNDLE_KEY_DATE) as Date
+            receiptDetailViewModel.updateReceipt { it.copy(date = newDate) }
+        }
     }
 
     override fun onDestroyView() {
@@ -74,13 +86,23 @@ class ReceiptItemFragment : Fragment() {
 
     private fun updateUi(receipt: Receipt) {
         binding.apply {
+
+            transactionDateEditText.text = receipt.date.toString()
+            transactionDateEditText.setOnClickListener {
+                findNavController().navigate(
+                    ReceiptItemFragmentDirections.selectDate(receipt.date)
+                )
+            }
+
             if (receiptProviderEditText.text.toString() != receipt.vendorName) {
                 receiptProviderEditText.setText(receipt.vendorName)
             }
-            if (transactionTotalEditText.text.toString() != receipt.grandTotal.toString()) {
+            if (transactionTotalEditText.text.toString() != "Receipt ID: " + receipt.grandTotal.toString()) {
                 transactionTotalEditText.setText(receipt.grandTotal.toString())
             }
-
+            if (receiptIdLabel.text.toString() != receipt.receiptId.toString()) {
+                receiptIdLabel.text = "Receipt ID: " + receipt.receiptId.toString()
+            }
             // TODO: onclicklistener for save receipt button?
         }
     }

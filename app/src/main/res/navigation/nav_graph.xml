@@ -12,6 +12,9 @@
         <action
             android:id="@+id/show_receipt"
             app:destination="@id/receiptItemFragment" />
+        <action
+            android:id="@+id/show_Receipt_Search"
+            app:destination="@id/receiptSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/receiptItemFragment"
@@ -21,6 +24,26 @@
         <argument
             android:name="receiptId"
             app:argType="java.util.UUID" />
+        <action
+            android:id="@+id/select_date"
+            app:destination="@id/datePickerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/receiptSearchFragment"
+        android:name="edu.msoe.receiptstorageapp.ReceiptSearchFragment"
+        android:label="ReceiptSearchFragment"
+        tools:layout="@layout/fragment_search_receipts">
+<!--        <argument-->
+<!--            android:name="viewModel"-->
+<!--            app:argType="edu.msoe.receiptstorageapp.ReceiptSearchViewModel"/>-->
+    </fragment>
+    <dialog
+        android:id="@+id/datePickerFragment"
+        android:name="edu.msoe.receiptstorageapp.DatePickerFragment"
+        android:label="DatePickerFragment" >
+        <argument
+            android:name="receiptDate"
+            app:argType="java.util.Date" />
+    </dialog>
 
 </navigation>

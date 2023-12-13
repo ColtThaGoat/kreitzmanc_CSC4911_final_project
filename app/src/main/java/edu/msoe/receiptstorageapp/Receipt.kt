@@ -11,7 +11,5 @@ data class Receipt (
     @PrimaryKey val receiptId: UUID,
     val date: Date,
     val vendorName: String,
-    val grandTotal: BigDecimal,
-//   TODO: Add @ForeignKey val imageSetId: UUID,
-//    then need DAO operations for updating imageSets/images
+    val grandTotal: BigDecimal
 )

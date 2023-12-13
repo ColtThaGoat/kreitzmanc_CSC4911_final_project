@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Sort Receipts"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <ToggleButton
+        android:id="@+id/toggleSortDirectionButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        android:textOff="Descending"
+        android:textOn="Ascending" />
+
+    <RadioGroup
+        android:id="@+id/sortRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="194dp">
+
+        <RadioButton
+            android:id="@+id/sortByDefaultRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="By Order Added" />
+
+        <RadioButton
+            android:id="@+id/sortByDateRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Date Issued" />
+
+        <RadioButton
+            android:id="@+id/byProviderRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Provider Name" />
+
+        <RadioButton
+            android:id="@+id/sortByGrandTotalRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Grand Total" />
+    </RadioGroup>
+</LinearLayout>

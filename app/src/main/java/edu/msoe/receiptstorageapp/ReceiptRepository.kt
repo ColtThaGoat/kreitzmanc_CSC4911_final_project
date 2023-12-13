@@ -28,6 +28,10 @@ class ReceiptRepository private constructor(
         return db.receiptDao().getReceiptItems()
     }
 
+    fun getSortedReceiptItems(sortBy: String, direction: Int): Flow<List<Receipt>> {
+        return db.receiptDao().getSortedReceiptItems(sortBy, direction)
+    }
+
     fun getReceiptItem(receiptId: UUID): Receipt = db.receiptDao().getReceiptItem(receiptId)
 
     fun updateReceiptItem(receipt: Receipt) {

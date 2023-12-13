@@ -25,7 +25,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="611dp"
             android:background="@color/white">
 
             <LinearLayout
@@ -92,8 +92,8 @@
                     android:layout_marginBottom="10dp"
                     android:backgroundTint="#BCBDBC"
                     android:src="@android:drawable/ic_menu_camera"
-                    app:tint="#000000"
-                    android:tintMode="src_in"/>
+                    android:tintMode="src_in"
+                    app:tint="#000000" />
 
                 <ImageView
                     android:id="@+id/imageView3"
