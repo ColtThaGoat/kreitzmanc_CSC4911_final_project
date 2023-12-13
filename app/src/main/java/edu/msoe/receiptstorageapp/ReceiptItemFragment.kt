@@ -1,11 +1,10 @@
 package edu.msoe.receiptstorageapp
 
-import android.content.Intent
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
@@ -14,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import edu.msoe.receiptstorageapp.databinding.FragmentReceiptItemBinding
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
@@ -61,6 +61,14 @@ class ReceiptItemFragment : Fragment() {
                         oldReceipt.copy(vendorName = receiptProviderEditText.text.toString(), grandTotal = transactionTotalEditText.text.toString().toBigDecimal())
                     }
                 }
+
+                // Display SnackBar for Confirmation that changes were saved
+                val saveConfirmedSnackBar = Snackbar.make(
+                    view,
+                    "Changes Saved!",
+                    Snackbar.LENGTH_SHORT
+                )
+                saveConfirmedSnackBar.show()
             }
         }
 
