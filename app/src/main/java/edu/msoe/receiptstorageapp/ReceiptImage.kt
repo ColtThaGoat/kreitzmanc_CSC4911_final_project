@@ -8,8 +8,8 @@ import java.util.UUID
 @Entity
 data class ReceiptImage (
     @PrimaryKey
-    val imageId: UUID
-    // TODO:
-    //  image val?
-    //  relate to ImageSet entity (foreign key?)
+    val imageId: UUID,
+    val imageLocation: String,
+    val sequenceNumber: Int,
+    val receiptID: UUID
 )

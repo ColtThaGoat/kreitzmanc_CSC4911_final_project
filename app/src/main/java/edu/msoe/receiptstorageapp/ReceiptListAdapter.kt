@@ -8,8 +8,9 @@ import edu.msoe.receiptstorageapp.databinding.ReceiptListItemBinding
 import java.math.BigDecimal
 import java.util.UUID
 
-private const val TAG = "ReceiptListAdapter"
-
+/**
+ * ReceiptListAdapter Class: Adapter for binding individual Receipt entries to Receipt Recycler View
+ */
 class ReceiptListAdapter (
     private val receipts: List<Receipt>,
     private val onReceiptClicked: (receiptId: UUID) -> Unit

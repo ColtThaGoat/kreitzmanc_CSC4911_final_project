@@ -20,15 +20,9 @@ import java.math.BigDecimal
 import java.util.Date
 import java.util.UUID
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
- * A simple [Fragment] subclass.
- * Use the [ReceiptListFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * ReceiptListFragment Class: Provides functionality for the UI fragment responsible for viewing
+ * the list of all entered receipts
  */
 class ReceiptListFragment : Fragment() {
     private var _binding: FragmentReceiptRecyclerBinding? = null

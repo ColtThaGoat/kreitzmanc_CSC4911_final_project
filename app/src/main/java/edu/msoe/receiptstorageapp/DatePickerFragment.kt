@@ -11,6 +11,10 @@ import androidx.navigation.fragment.navArgs
 import java.util.Calendar
 import java.util.GregorianCalendar
 
+/**
+ * DatePickerFragment Class: Provides a DialogFragment for allowing users to set the date of a
+ * receipt.
+ */
 class DatePickerFragment : DialogFragment() {
 
     private val args: DatePickerFragmentArgs by navArgs()
@@ -39,6 +43,7 @@ class DatePickerFragment : DialogFragment() {
 
         var datePickerDialog = DatePickerDialog(requireContext(), dateListener, year, month, day)
 
+        // Only allow current/past dates
         datePickerDialog.datePicker.maxDate = (System.currentTimeMillis() - 1000)
 
         return datePickerDialog

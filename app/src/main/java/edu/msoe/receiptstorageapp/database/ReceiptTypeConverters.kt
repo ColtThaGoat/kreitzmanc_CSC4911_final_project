@@ -4,6 +4,11 @@ import androidx.room.TypeConverter
 import java.math.BigDecimal
 import java.util.Date
 
+
+/**
+ * ReceiptTypeConverters Class: Defines all TypeConverters needed for communication between database
+ * and UI
+ */
 class ReceiptTypeConverters {
     @TypeConverter
     fun fromDate(date: Date): Long {
@@ -27,30 +32,4 @@ class ReceiptTypeConverters {
         }
         return transactionTotal.toBigDecimal()
     }
-
-//    @TypeConverter
-//    fun fromString(transactionTotal: String): Double {
-//        if (transactionTotal.isEmpty())
-//            return 0.0
-//        return transactionTotal.toDouble()
-//    }
-//
-//    @TypeConverter
-//    fun toString(transactionTotal: Double): String {
-//        return transactionTotal.toString()
-//    }
-
-
-//    @TypeConverter
-//    fun bigDecimalToDouble(transactionTotal: BigDecimal): Double {
-//        return transactionTotal.toDouble()
-//    }
-
-//    @TypeConverter
-//    fun stringToBigDecimal(transactionTotal: Double?): BigDecimal {
-//        if (transactionTotal == null) return BigDecimal.ZERO
-//        return BigDecimal.valueOf(transactionTotal) ?: BigDecimal.ZERO
-//    }
-
-
 }

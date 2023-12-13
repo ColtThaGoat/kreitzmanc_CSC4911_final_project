@@ -12,9 +12,11 @@ import java.lang.IllegalStateException
 import java.util.Date
 import java.util.UUID
 
-private const val TAG = "ReceiptRepository"
 private const val DATABASE_NAME = "receipt-database"
 
+/**
+ * ReceiptRepository: Repository class for the Receipt Database
+ */
 class ReceiptRepository private constructor(
     context: Context,
     private val coroutineScope: CoroutineScope = GlobalScope

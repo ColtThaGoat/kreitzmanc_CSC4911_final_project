@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import edu.msoe.receiptstorageapp.ImageSet
 import edu.msoe.receiptstorageapp.ReceiptImage
 import edu.msoe.receiptstorageapp.Receipt
 import kotlinx.coroutines.flow.Flow
@@ -58,28 +57,16 @@ interface ReceiptDao {
     @Query("DELETE FROM receipt")
     fun deleteReceiptItems()
 
-//    @Query("DELETE FROM receipt WHERE receiptId(:receiptId)")
-//    fun deleteReceiptItem(receiptId: UUID)
-
-    // ------------ ImageSet Database Operations ------------
-//    @Insert
-//    fun addReceiptImageSet(imageSet: ImageSet)
-//
-//    @Query("DELETE FROM imageSet")
-//    fun deleteReceiptImageSets()
-//
-//    @Query("DELETE FROM imageSet WHERE imageSetId(:imageSetId)")
-//    fun deleteReceiptImageSet(imageSetId: UUID)
-
     // ------------ ReceiptImage Database Operations ------------
     @Insert
     fun addReceiptImage(receiptImage: ReceiptImage)
 
-//    @Query("DELETE FROM receiptImage")
-//    fun deleteReceiptImages()
+    // TODO: implement support for images
+//    @Query("SELECT * FROM receiptImage WHERE receiptID=(:receiptId)")
+//    fun getReceiptImages(receiptId: UUID): Flow<List<ReceiptImage>>
 //
-//    @Query("DELETE FROM receiptImage WHERE receiptImageId(:receiptImageId)")
-//    fun deleteReceiptImage(receiptImageId: UUID)
-
+//    @Query("SELECT * FROM receiptImage WHERE receiptID(:receiptId)" +
+//            "AND sequenceNumber=(sequenceNumber)")
+//    fun getReceiptImage(receiptId: UUID, sequenceNumber: Int): ReceiptImage
 
 }

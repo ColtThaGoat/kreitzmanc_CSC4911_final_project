@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-private const val TAG = "ReceiptListViewModel"
+/**
+ * ReceiptListViewModel Class: ViewModel for managing state of the list of all entered Receipt items
+ */
 class ReceiptListViewModel : ViewModel() {
     private val receiptRepository = ReceiptRepository.get()
 

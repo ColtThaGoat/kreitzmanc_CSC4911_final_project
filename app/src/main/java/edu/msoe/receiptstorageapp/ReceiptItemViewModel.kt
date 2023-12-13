@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.UUID
 
+/**
+ * View Model for a particular receipt (used for managing state of a selected or newly added receipt)
+ */
 class ReceiptItemViewModel(receiptId: UUID): ViewModel() {
     private val receiptRepository = ReceiptRepository.get()
 

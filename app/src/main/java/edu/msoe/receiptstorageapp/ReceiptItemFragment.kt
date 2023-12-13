@@ -19,7 +19,11 @@ import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.Date
 
-private const val TAG = "ReceiptItemFragment"
+
+/**
+ * ReceiptItemFragment Class: Provides functionality for the UI fragment responsible for adding or
+ * updating a Receipt
+ */
 class ReceiptItemFragment : Fragment() {
 
     private var _binding: FragmentReceiptItemBinding? = null
@@ -47,17 +51,15 @@ class ReceiptItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+            // OnClick Listener for 'Save Changes' button
             saveReceiptChangesButton.setOnClickListener {
-                receiptDetailViewModel.updateReceipt { oldReceipt ->
-                    oldReceipt.copy(vendorName = receiptProviderEditText.text.toString())
-                }
-
+                // update provider name and transaction total
                 receiptDetailViewModel.updateReceipt { oldReceipt ->
                     if (transactionTotalEditText.text.toString().isEmpty()) {
-                            oldReceipt.copy(grandTotal = BigDecimal.ZERO)
-                        } else {
-                            oldReceipt.copy(grandTotal = transactionTotalEditText.text.toString().toBigDecimal())
-                        }
+                        oldReceipt.copy(vendorName = receiptProviderEditText.text.toString(), grandTotal = BigDecimal.ZERO)
+                    } else {
+                        oldReceipt.copy(vendorName = receiptProviderEditText.text.toString(), grandTotal = transactionTotalEditText.text.toString().toBigDecimal())
+                    }
                 }
             }
         }
@@ -70,6 +72,7 @@ class ReceiptItemFragment : Fragment() {
             }
         }
 
+        // Set Listener for FragmentResult of DatePickerFragment
         setFragmentResultListener(
             DatePickerFragment.REQUEST_KEY_DATE
         ) { _, bundle ->
@@ -84,6 +87,9 @@ class ReceiptItemFragment : Fragment() {
         _binding = null
     }
 
+    /**
+     * Updates the UI according to changes made to the ReceiptItem
+     */
     private fun updateUi(receipt: Receipt) {
         binding.apply {
 
@@ -103,7 +109,6 @@ class ReceiptItemFragment : Fragment() {
             if (receiptIdLabel.text.toString() != receipt.receiptId.toString()) {
                 receiptIdLabel.text = "Receipt ID: " + receipt.receiptId.toString()
             }
-            // TODO: onclicklistener for save receipt button?
         }
     }
 }

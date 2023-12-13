@@ -9,13 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import edu.msoe.receiptstorageapp.databinding.FragmentSearchReceiptsBinding
 
+/**
+ * ReceiptSearchFragment Class: Provides functionality for the UI fragment responsible for setting
+ * search/sort filters on the list of receipts
+ */
 class ReceiptSearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchReceiptsBinding
 
+    // TODO: figure out how to communicate state to ReceiptListViewModel so filters can be applied
+    //  to list of receipts
 //    private val args: ReceiptSearchFragmentArgs by navArgs()
-
 //    private val receiptSearchViewModel: ReceiptSearchViewModel = args.viewModel
-
 //    private val receiptSearchViewModel: ReceiptListViewModel by viewModels()
 
     override fun onCreateView(
@@ -39,13 +43,14 @@ class ReceiptSearchFragment : Fragment() {
                     1
                 else
                     0
-
+                // TODO: communicate sort direction state to ViewModel
 //                receiptSearchViewModel.setSortDirection(direction)
             }
 
             sortRadioGroup.setOnCheckedChangeListener { _, _ ->
                 checkedRadioId = sortRadioGroup.checkedRadioButtonId.toString();
 
+                // TODO: communicate selected radio button state to ViewModel
 //                when (checkedRadioId) {
 //                    "sortByDateRadioButton" -> receiptSearchViewModel.setSortBy("date")
 //                    "sortByProviderRadioButton" -> receiptSearchViewModel.setSortBy("vendorName")
